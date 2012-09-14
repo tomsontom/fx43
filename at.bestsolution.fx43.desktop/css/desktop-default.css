@@ -1,0 +1,20 @@
+.desktop {
+	-fx-background-image: url('/media/img_03.jpg');	
+}
+
+.desktop-header {
+	-fx-background-color: rgba(0,0,0,0.5);
+	-fx-padding: 3;
+}
+
+.desktop-header > .wireless {
+	-fx-text-fill: white;
+}
+
+.desktop-header > Label {
+	-fx-text-fill: white;
+}
+
+.desktop-header > Label.clock {
+	-fx-font-weight: bold;
+}
