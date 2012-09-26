@@ -41,16 +41,22 @@ public class ModelPersitence {
 				MDesktop desktop = new MDesktop();
 				int i = 0;
 				MDesktopPage page = null;
-				for( FxApplication apps : registry.getApplications() ) {
+				for( FxApplication app : registry.getApplications() ) {
+					System.err.println("Adding application: " + app);
 					if( i % 30 == 0 ) {
 						page = new MDesktopPage();
 						desktop.getPages().add(page);
 					}
 					
-					page.getApplications().add(apps.getId());
+					page.getApplications().add(app.getId());
 					
 					i++;
 				}
+				
+				if( desktop.getPages().size() == 0 ) {
+					desktop.getPages().add(new MDesktopPage());
+				}
+				
 				return desktop;
 			} else {
 				SAXParserFactory factory = SAXParserFactory.newInstance();

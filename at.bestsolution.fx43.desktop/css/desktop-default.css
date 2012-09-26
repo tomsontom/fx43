@@ -18,3 +18,8 @@
 .desktop-header > Label.clock {
 	-fx-font-weight: bold;
 }
+
+.desktop-item > Text {
+	-fx-font-weight: bold;
+	-fx-fill: white;
+}

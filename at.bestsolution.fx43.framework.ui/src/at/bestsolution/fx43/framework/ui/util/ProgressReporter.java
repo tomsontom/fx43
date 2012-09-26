@@ -10,6 +10,6 @@
  *******************************************************************************/
 package at.bestsolution.fx43.framework.ui.util;
 
-public interface ProgressReporter {
-
+public interface ProgressReporter<S> {
+	public void state(S state, String progressInfo, double progress);
 }

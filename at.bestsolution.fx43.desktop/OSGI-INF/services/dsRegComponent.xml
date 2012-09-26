@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scr:component xmlns:scr="http://www.osgi.org/xmlns/scr/v1.1.0" name="at.bestsolution.fx43.desktop.dsRegComponent">
+   <implementation class="at.bestsolution.fx43.desktop.internal.DSRegistryComponent"/>
+   <service>
+      <provide interface="at.bestsolution.fx43.desktop.internal.DSRegistryComponent"/>
+   </service>
+   <reference bind="addApplication" cardinality="0..n" interface="at.bestsolution.fx43.framework.ui.FxApplication" name="FxApplication" policy="dynamic" unbind="removeApplication"/>
+</scr:component>

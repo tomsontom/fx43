@@ -36,7 +36,7 @@ public class BrowserControl {
 		}
 		
 		WebView browser = new WebView();
-		browser.getEngine().load("http://www.bestsolution.at");
+		browser.getEngine().load("file:///Users/tomschindl/git/e-fx-clipse/homepage/index.html");
 		p.setCenter(browser);
 	}
 	

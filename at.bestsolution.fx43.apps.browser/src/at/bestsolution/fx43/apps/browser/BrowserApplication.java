@@ -53,7 +53,8 @@ public class BrowserApplication implements FxApplication {
 	}
 
 	@Override
-	public Node launch(ProgressReporter reporter, IEclipseContext applicationContext) {
+	public Node launch(ProgressReporter<LaunchState> reporter, IEclipseContext applicationContext) {
+		reporter.state(LaunchState.DONE, "", 1.0);
 		return ContextInjectionFactory.make(BrowserControl.class, applicationContext).getNode();
 	}
 

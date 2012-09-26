@@ -19,7 +19,13 @@ import at.bestsolution.fx43.framework.ui.util.ProgressReporter;
 
 @SuppressWarnings("restriction")
 public interface FxApplication {
-	public Node launch(ProgressReporter reporter, IEclipseContext applicationContext);
+	public enum LaunchState {
+		LAUNCHING,
+		DONE
+	}
+	
+	
+	public Node launch(ProgressReporter<LaunchState> reporter, IEclipseContext applicationContext);
 	
 	public void show();
 	
