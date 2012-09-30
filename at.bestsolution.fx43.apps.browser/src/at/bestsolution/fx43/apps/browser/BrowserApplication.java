@@ -49,7 +49,7 @@ public class BrowserApplication implements FxApplication {
 
 	@Override
 	public String getName() {
-		return "FX Browse";
+		return "Web";
 	}
 
 	@Override

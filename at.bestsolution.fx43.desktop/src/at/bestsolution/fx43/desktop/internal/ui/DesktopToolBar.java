@@ -24,10 +24,10 @@ public class DesktopToolBar {
 		pane = new HBox(35);
 		pane.setPadding(new Insets(0,20,20,20));
 		
-		pane.getChildren().add(createAppIconNode("/media/tmp/app_1.png"));
-		pane.getChildren().add(createAppIconNode("/media/tmp/app_2.png"));
-		pane.getChildren().add(createAppIconNode("/media/tmp/app_3.png"));
-		pane.getChildren().add(createAppIconNode("/media/tmp/app_4.png"));		
+		pane.getChildren().add(createAppIconNode("/media/tmp/browser.png"));
+		pane.getChildren().add(createAppIconNode("/media/tmp/media.png"));
+		pane.getChildren().add(createAppIconNode("/media/tmp/twitter.png"));
+		pane.getChildren().add(createAppIconNode("/media/tmp/clock.png"));		
 	}
 	
 	private Node createAppIconNode(String imageUrl) {

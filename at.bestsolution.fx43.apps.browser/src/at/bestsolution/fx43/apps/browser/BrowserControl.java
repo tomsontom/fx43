@@ -10,9 +10,14 @@
  *******************************************************************************/
 package at.bestsolution.fx43.apps.browser;
 
+import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextField;
+import javafx.scene.control.ToolBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Priority;
@@ -20,23 +25,40 @@ import javafx.scene.web.WebView;
 
 public class BrowserControl {
 	private BorderPane p;
+	private Button goButton;
+	private ComboBox<String> urlField;
 	
 	public BrowserControl() {
 		p = new BorderPane();
+		p.setStyle("-fx-background-color: white");
 		
 		{
-			HBox box = new HBox();
-			TextField urlField = new TextField();
-			box.getChildren().add(urlField);
+			ToolBar box = new ToolBar();
+			
+			urlField = new ComboBox<>();
+			urlField.setEditable(true);
+			urlField.setMaxWidth(3000);
+			urlField.setItems(FXCollections.observableArrayList("file:///Users/tomschindl/git/e-fx-clipse/homepage/index.html"));
+			box.getItems().add(urlField);
 			HBox.setHgrow(urlField, Priority.ALWAYS);
 			
-			Button b = new Button("Go");
-			box.getChildren().add(b);
-			p.setTop(box);			
+			TextField searchField = new TextField();
+			searchField.setPromptText("Search");
+			box.getItems().add(searchField);
+			
+			goButton = new Button("Go");
+			box.getItems().add(goButton);
+			p.setTop(box);
 		}
 		
-		WebView browser = new WebView();
-		browser.getEngine().load("file:///Users/tomschindl/git/e-fx-clipse/homepage/index.html");
+		final WebView browser = new WebView();
+		goButton.setOnAction(new EventHandler<ActionEvent>() {
+			
+			@Override
+			public void handle(ActionEvent event) {
+				browser.getEngine().load(urlField.getEditor().getText()); 
+			}
+		});
 		p.setCenter(browser);
 	}
 	

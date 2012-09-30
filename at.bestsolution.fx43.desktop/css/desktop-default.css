@@ -1,5 +1,6 @@
 .desktop {
-	-fx-background-image: url('/media/img_03.jpg');	
+	-fx-background-image: url('/media/img_03.jpg');
+	-fx-background-size: cover;
 }
 
 .desktop-header {

@@ -12,7 +12,11 @@ package at.bestsolution.fx43.desktop.internal.ui;
 
 import java.util.concurrent.atomic.AtomicReference;
 
+import javafx.animation.Animation;
+import javafx.animation.ScaleTransition;
+import javafx.animation.ScaleTransitionBuilder;
 import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.geometry.HPos;
 import javafx.geometry.VPos;
@@ -23,6 +27,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.util.Duration;
 
 import javax.inject.Inject;
 
@@ -42,6 +47,7 @@ public class DesktopItem {
 	private final DSRegistryComponent registry;
 	private GridPane box;
 	private final IEventBroker eventBroker;
+	private Animation animation;
 	
 	@Inject
 	public DesktopItem(FxApplication application, DSRegistryComponent registry, IEventBroker eventBroker) {
@@ -55,6 +61,27 @@ public class DesktopItem {
 	private void init() {
 		box = new GridPane();
 		box.getStyleClass().add("desktop-item");
+		box.setOnMouseEntered(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				animation.setCycleCount(Animation.INDEFINITE);
+				animation.setAutoReverse(true);
+				animation.playFromStart();
+			}
+		});
+		box.setOnMouseExited(new EventHandler<MouseEvent>() {
+
+			@Override
+			public void handle(MouseEvent event) {
+				animation.stop();
+				animation.setAutoReverse(true);
+				animation.setCycleCount(2);
+				animation.playFrom(animation.getCurrentTime());
+			}
+		});
+		
+		animation = ScaleTransitionBuilder.create().node(box).toX(1.2).toY(1.2).fromX(1).fromY(1).duration(new Duration(300)).build();
 		
 		ImageView img = new ImageView(application.getIcon());
 		box.getChildren().add(img);
@@ -120,7 +147,7 @@ public class DesktopItem {
 	}
 	
 	private void displayApplication(FxApplication application) {
-		eventBroker.send(EventConstants.APPLICATION_SHOW_TOPIC, application);
+		eventBroker.send(EventConstants.APPLICATION_SHOW_TOPIC, new DisplayAppData(application, this));
 	}
 	
 	private IEclipseContext createApplicationContext(FxApplication application) {
@@ -131,5 +158,15 @@ public class DesktopItem {
 	
 	public Node getContentNode() {
 		return box;
+	}
+	
+	public static class DisplayAppData {
+		public final FxApplication application;
+		public final DesktopItem item;
+		
+		public DisplayAppData(FxApplication application, DesktopItem item) {
+			this.application = application;
+			this.item = item;
+		}
 	}
 }

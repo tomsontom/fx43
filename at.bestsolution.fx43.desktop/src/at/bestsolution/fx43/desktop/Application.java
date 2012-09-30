@@ -19,7 +19,7 @@ public class Application {
 		Activator.doInjection(context);
 		ContextInjectionFactory.make(DesktopUI.class, context);
 		
-		stage.setFullScreen(true);
+//		stage.setFullScreen(true);
 		stage.setWidth(1024);
 		stage.setHeight(800);
 		stage.show();
