@@ -26,7 +26,11 @@ public class J1Control {
 	public J1Control() {
 		contentNode = new BorderPane();
 		contentNode.setStyle("-fx-background-color: black;");
-		Text text = new Text("Hello J1");
+		
+		
+		
+		
+		Text text = new Text("Hello ");
 		text.setFont(Font.font("Arial", 120));
 		text.setStyle("-fx-fill: white");
 		text.setFontSmoothingType(FontSmoothingType.LCD);

@@ -4,4 +4,5 @@
    <service>
       <provide interface="at.bestsolution.fx43.framework.ui.FxApplication"/>
    </service>
+   <property name="service.ranking" type="Integer" value="1"/>
 </scr:component>
