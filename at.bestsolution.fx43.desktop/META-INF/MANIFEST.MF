@@ -10,7 +10,6 @@ Require-Bundle: org.eclipse.core.runtime,
  at.bestsolution.efxclipse.runtime.application,
  at.bestsolution.efxclipse.runtime.di;bundle-version="0.1.1",
  javax.inject;bundle-version="1.0.0",
- javax.annotation;bundle-version="1.0.0",
  org.eclipse.e4.core.contexts;bundle-version="1.1.0",
  org.eclipse.e4.core.di;bundle-version="1.1.0",
  at.bestsolution.fx43.framework.ui;bundle-version="1.0.0",
@@ -46,6 +45,7 @@ Import-Package: javafx.animation;version="2.0.0",
  javafx.scene.transform;version="2.0.0",
  javafx.scene.web;version="2.0.0",
  javafx.stage;version="2.0.0",
- javafx.util;version="2.0.0"
+ javafx.util;version="2.0.0",
+ javax.annotation;version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Service-Component: OSGI-INF/services/dsRegComponent.xml
