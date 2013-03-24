@@ -30,7 +30,7 @@ public class J1Control {
 		
 		
 		
-		Text text = new Text("Hello ");
+		Text text = new Text("Hello Munich");
 		text.setFont(Font.font("Arial", 120));
 		text.setStyle("-fx-fill: white");
 		text.setFontSmoothingType(FontSmoothingType.LCD);

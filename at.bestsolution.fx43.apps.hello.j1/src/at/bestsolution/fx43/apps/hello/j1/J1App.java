@@ -63,7 +63,7 @@ public class J1App implements FxApplication {
 
 	@Override
 	public String getName() {
-		return "Hello J1";
+		return "Hello Vienna";
 	}
 
 }
